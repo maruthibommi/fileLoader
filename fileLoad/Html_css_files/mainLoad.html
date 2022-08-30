@@ -1,6 +1,18 @@
-<head>
-    <title>file Loader</title>
-    <body>
-        <h1>Hello Django</h1>
-    </body>
-</head>
+{% extends 'fileLoad/Html_css_files/base.html' %}
+
+    {% block content %}
+
+    <h2>file Load Page</h2>
+    <form method="post" enctype="multipart/form-data" >
+        {% csrf_token %}
+        <input type="file" name = 'document' />
+        <button type="submit">Upload file</button>
+    </form>
+    {% if url %}
+        <p>Uploaded file: <a href="{{ url }}"> {{ url }} </a></p>
+    {% endif %}
+    {% for i in d %}
+        <p>{{ i }}</p><br/>
+    {% endfor %}
+    {% endblock %}
+
