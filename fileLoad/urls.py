@@ -3,5 +3,5 @@ from fileLoad import views
 
 urlpatterns = [
     path("", views.upload, name="upload"),
-    path("validate/data", views.validate, name="validate"),
+    path("validate/", views.validate, name="validate"),
 ]

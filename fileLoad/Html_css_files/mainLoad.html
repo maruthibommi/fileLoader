@@ -41,26 +41,26 @@
     
     {% if url %}
         <p>Uploaded file: <a href="{{ url }}"> {{ url }} </a></p>
-    
-    {% for i in d %}
-        <p>{{ i }}</p><br/>
-    {% endfor %}
-
-    <p></p>
-    <hr>
-    <h1 class="title">{{name}}</h1>
-    <div class="divscroll">
-        <table >
-            {% for row in excel_data %}
-            <tr>
-                {% for cell in row %}
-                <td>{{ cell }}</td>
+        <form action="validate/" method = "post">
+            {% csrf_token %}
+            <input type="hidden" id="file_name" name="file_name" value="{{ name }}" />
+            <input type="submit" value="validate" />
+        </form>
+        <p></p>
+        <hr>
+        <h1 class="title">{{name}}</h1>
+        <div class="divscroll">
+            <table >
+                {% for row in excel_data %}
+                <tr>
+                    {% for cell in row %}
+                    <td>{{ cell }}</td>
+                    {% endfor %}
+                </tr>
                 {% endfor %}
-            </tr>
-            {% endfor %}
-        </table> 
-        <br>
-    </div>
+            </table> 
+            <br>
+        </div>
     {% endif %}
     {% endblock %}
 

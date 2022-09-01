@@ -1,5 +1,52 @@
 {% extends 'fileLoad/Html_css_files/base.html' %}
 
 {% block content %}
+<style>
+    .title{
+        text-align: center;
+    }
+
+    .divscroll
+    {
+    width : 95%;
+    Height: 1000px;
+    Overflow-x:scroll;
+    Overflow-y:scroll;
+    }
+
+    table{
+        font-size: 13px;
+        margin: auto;
+        text-align: center;
+        box-shadow: 12px 12px 20px 6px #2e6da4;
+        font-size: 15px;
+        color: antiquewhite;
+        
+    }
+    table tr:nth-child(odd){
+        background: #02295c;
+    }
+    table tr:nth-child(even){
+        background: #036cff;
+    }
+
+</style>
     <h1>Validate Page</h1>
+
+    {% if name %}
+
+        <h1 class="title">{{name}}</h1>
+        <div class="divscroll">
+            <table >
+                {% for row in excel_data %}
+                <tr>
+                    {% for cell in row %}
+                    <td>{{ cell }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table> 
+            <br>
+        </div>
+    {% endif %}
 {% endblock %}
