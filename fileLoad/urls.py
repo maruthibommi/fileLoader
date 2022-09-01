@@ -2,6 +2,6 @@ from django.urls import path
 from fileLoad import views
 
 urlpatterns = [
-    path("", views.home, name="home"),
-    path("upload/", views.upload, name="upload"),
+    path("", views.upload, name="upload"),
+    path("validate/data", views.validate, name="validate"),
 ]

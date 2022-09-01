@@ -1,18 +1,66 @@
 {% extends 'fileLoad/Html_css_files/base.html' %}
 
-    {% block content %}
 
+    {% block content %}
+    <style>
+        .title{
+            text-align: center;
+        }
+
+        .divscroll
+        {
+        width : 95%;
+        Height: 1000px;
+        Overflow-x:scroll;
+        Overflow-y:scroll;
+        }
+
+        table{
+            font-size: 13px;
+            margin: auto;
+            text-align: center;
+            box-shadow: 12px 12px 20px 6px #2e6da4;
+            font-size: 15px;
+            color: antiquewhite;
+            
+        }
+        table tr:nth-child(odd){
+            background: #02295c;
+        }
+        table tr:nth-child(even){
+            background: #036cff;
+        }
+
+    </style>
     <h2>file Load Page</h2>
     <form method="post" enctype="multipart/form-data" >
         {% csrf_token %}
-        <input type="file" name = 'document' />
+        <input type="file" name = 'documents' multiple/>
         <button type="submit">Upload file</button>
     </form>
+    
     {% if url %}
         <p>Uploaded file: <a href="{{ url }}"> {{ url }} </a></p>
-    {% endif %}
+    
     {% for i in d %}
         <p>{{ i }}</p><br/>
     {% endfor %}
+
+    <p></p>
+    <hr>
+    <h1 class="title">{{name}}</h1>
+    <div class="divscroll">
+        <table >
+            {% for row in excel_data %}
+            <tr>
+                {% for cell in row %}
+                <td>{{ cell }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table> 
+        <br>
+    </div>
+    {% endif %}
     {% endblock %}
 
