@@ -13,7 +13,6 @@ from django.db import connection
 
 def read_file(file_name):
     fs = FileSystemStorage()
-    #if(fs.exists(file_name)):
     uploaded_file = fs.open(file_name)
     df = openpyxl.load_workbook(uploaded_file,data_only=True)
     for i in df.sheetnames:
@@ -48,7 +47,7 @@ def upload(request):
         context['excel_data'] = read_file(context['name'])
         print(request.POST['fileNames'])
     return render(request,'fileLoad/Html_css_files/mainLoad.html',context)
-   
+
 
 def validate(request):
     context = {}
