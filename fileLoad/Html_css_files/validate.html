@@ -38,15 +38,20 @@
         <h1 class="title">{{name}}</h1>
         <div class="divscroll">
             <table >
-                {% for row in excel_data %}
+                <h1 class="title" >Duplicates</h1>
+                <hr>
+                {% for row in duplicates %}
                 <tr>
                     {% for cell in row %}
                     <td>{{ cell }}</td>
                     {% endfor %}
                 </tr>
                 {% endfor %}
+                <br>
+                
             </table> 
             <br>
+            <hr>
         </div>
     {% endif %}
 {% endblock %}

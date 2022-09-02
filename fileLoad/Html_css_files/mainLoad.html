@@ -35,7 +35,12 @@
     <h2>file Load Page</h2>
     <form method="post" enctype="multipart/form-data" >
         {% csrf_token %}
-        <input type="file" name = 'documents' multiple/>
+        <input type="file" name = 'documents' required/>
+        <select name="fileNames" id="fileNames" required>
+            {% for i in fileList %}
+                <option value="{{i}}">{{i}}</option>
+            {% endfor %}
+        </select>
         <button type="submit">Upload file</button>
     </form>
     

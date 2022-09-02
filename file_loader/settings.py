@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
+from email.policy import default
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -74,9 +75,31 @@ WSGI_APPLICATION = 'file_loader.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    'default' : {
+        'ENGINE': 'mssql',
+
+        # String. Database name. Required.
+        'NAME': 'DEV_TOOL',
+
+        # String. Database user name in "user" format. If not given then MS Integrated Security will be used.
+        'USER': 'WebUser',
+
+        # String. Database user password.
+        'PASSWORD': 'Allianz@0202',
+
+         # String. SQL Server instance in "server\instance" format.
+        'HOST': 'DESKTOP-IC8IBFG\SQLEXPRESS',
+
+        # String. Server instance port. An empty string means the default port.
+        'PORT': '',
+
+        # Dictionary. Additional database settings.
+        'OPTIONS': {
+            # String. ODBC Driver to use ("ODBC Driver 17 for SQL Server", 
+            # "SQL Server Native Client 11.0", "FreeTDS" etc). 
+            # Default is "ODBC Driver 17 for SQL Server".
+            'driver': 'ODBC Driver 17 for SQL Server',
+        }
     }
 }
 
