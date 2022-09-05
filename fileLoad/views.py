@@ -74,3 +74,4 @@ def convert_to_dataframe(data_path):
     nm_arr = read_file(data_path)
     df = pd.DataFrame(nm_arr)
     return df
+    

@@ -4,7 +4,24 @@
         .title{
             text-align: center;
         }
-
+        h2{
+            text-align: center;
+            color: aliceblue;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+        }
+        p{
+            text-align: center;
+            color: aliceblue;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+        }
+        a{
+            text-align: center;
+            color: aliceblue;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+        }
+        a:hover{
+            color: rgb(73, 144, 207);
+        }
         .divscroll
         {
         width : 95%;
@@ -13,14 +30,56 @@
         Overflow-y:scroll;
         }
 
+        .btn {
+            box-sizing: border-box;
+            -webkit-appearance: none;
+                -moz-appearance: none;
+                    appearance: none;
+            background-color: transparent;
+            border: 2px solid #e74c3c;
+            border-radius: 0.6em;
+            color: #e74c3c;
+            cursor: pointer;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-align-self: center;
+                -ms-flex-item-align: center;
+                    align-self: center;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1;
+            margin: 20px;
+            padding: 1.2em 2.8em;
+            text-decoration: none;
+            text-align: center;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            }
+        .btn:hover, .btn:focus {
+            color: rgb(255, 255, 255);
+            outline: 0;
+        }
+
+        .third {
+            border-color: #3498db;
+            color: #fff;
+            box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
+            -webkit-transition: all 150ms ease-in-out;
+            transition: all 150ms ease-in-out;
+        }
+        .third:hover {
+            box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+        }
         table{
             font-size: 13px;
             margin: auto;
             text-align: center;
             box-shadow: 12px 12px 20px 6px #2e6da4;
             font-size: 15px;
-            color: antiquewhite;
-            
+            color: antiquewhite; 
         }
         table tr:nth-child(odd){
             background: #02295c;
@@ -28,26 +87,91 @@
         table tr:nth-child(even){
             background: #036cff;
         }
-
+        .custom-file-upload {
+            border: 1px solid #ccc;
+            display: inline-block;
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+        input[type="file"] {
+            color: aliceblue;
+            cursor: pointer;
+        }
+        input::file-selector-button{
+            font-weight: bold;
+            color: dodgerblue;
+            padding: 0.5em;
+            border: thin solid grey;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
+      
+.SelectBox{
+  position:relative;
+}
+.SelectBox select{
+  width:300px;
+  height:35px;
+  background-color:#7c82be;
+  color:#fff;
+  -webkit-appearance:none;
+  box-shadow:0px 0px 10px rgba(0,0,0,.2);
+  border:none;
+  outline:none;
+  padding-left:5px;
+  font-size:17px;
+  cursor:pointer;
+}
+.SelectBox .chevron{
+  position:absolute;
+  top:0px;
+  right:0px;
+  text-align:center;
+  line-height:35px;
+  width:30px;
+  height:100%;
+  background-color:#7c82be;
+  pointer-events:none;
+  color:#fff;
+}
+.SelectBox select option{
+  background-color:#7c82be;
+}
+.Inputs-Div{
+    justify-self: center;
+    width: 90%;
+    border: 3px solid rgb(205, 248, 205);
+}
+        
     </style>
     <h2>file Load Page</h2>
-    <form method="post" enctype="multipart/form-data" >
-        {% csrf_token %}
-        <input type="file" name = 'documents' required/>
-        <select name="fileNames" id="fileNames" required>
-            {% for i in fileList %}
-                <option value="{{i}}">{{i}}</option>
-            {% endfor %}
-        </select>
-        <button type="submit">Upload file</button>
-    </form>
+    <div class="Inputs-Div">
+        <center>
+            <form method="post" enctype="multipart/form-data" >
+                {% csrf_token %}
+                <label class="custom-file-upload">
+                    <input type="file" name = 'documents' accept=".csv" required/>
+                </label>
+                <div class="SelectBox">
+                    <select name="fileNames" id="fileNames" required>
+                        {% for i in fileList %}
+                            <option value="{{i}}">{{i}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button class="btn third" type="submit">Upload file</button>
+            </form>
+        </center>
+    </div>
+    
     
     {% if url %}
         <p>Uploaded file: <a href="{{ url }}"> {{ url }} </a></p>
         <form action="validate/" method = "post">
             {% csrf_token %}
             <input type="hidden" id="file_name" name="file_name" value="{{ name }}" />
-            <input type="submit" value="validate" />
+            <input class="btn third" type="submit"  value="validate" />
         </form>
         <p></p>
         <hr>
