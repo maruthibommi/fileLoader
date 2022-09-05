@@ -4,7 +4,7 @@
         .title{
             text-align: center;
         }
-        h2{
+        h2,label{
             text-align: center;
             color: aliceblue;
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
@@ -108,7 +108,8 @@
         
       
 .SelectBox{
-  position:relative;
+    padding-top: 1%;
+    position:relative;
 }
 .SelectBox select{
   width:300px;
@@ -139,8 +140,6 @@
   background-color:#7c82be;
 }
 .Inputs-Div{
-    justify-self: center;
-    width: 90%;
     border: 3px solid rgb(205, 248, 205);
 }
         
@@ -154,6 +153,7 @@
                     <input type="file" name = 'documents' accept=".csv" required/>
                 </label>
                 <div class="SelectBox">
+                    <label>List of files</label>
                     <select name="fileNames" id="fileNames" required>
                         {% for i in fileList %}
                             <option value="{{i}}">{{i}}</option>
