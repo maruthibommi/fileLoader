@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'file_loader.wsgi.application'
 
 DATABASES = {
     'default' : {
-        'ENGINE': 'mssql',
+        'ENGINE': 'sql_server.pyodbc',
 
         # String. Database name. Required.
         'NAME': 'DEV_TOOL',
@@ -88,7 +88,7 @@ DATABASES = {
         'PASSWORD': 'Allianz@0202',
 
          # String. SQL Server instance in "server\instance" format.
-        'HOST': 'DESKTOP-IC8IBFG\SQLEXPRESS',
+        'HOST': 'DESKTOP-HNC9LDA\SQLEXPRESS',
 
         # String. Server instance port. An empty string means the default port.
         'PORT': '',
