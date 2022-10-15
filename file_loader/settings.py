@@ -88,10 +88,10 @@ DATABASES = {
         'PASSWORD': 'Allianz@0202',
 
          # String. SQL Server instance in "server\instance" format.
-        'HOST': 'DESKTOP-HNC9LDA\SQLEXPRESS',
+        'HOST': 'DESKTOP-IFIGS4J',
 
         # String. Server instance port. An empty string means the default port.
-        'PORT': '',
+        'PORT': '1433',
 
         # Dictionary. Additional database settings.
         'OPTIONS': {
