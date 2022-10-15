@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 from email.policy import default
 import os
+import sqlserver
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -79,19 +80,19 @@ DATABASES = {
         'ENGINE': 'sql_server.pyodbc',
 
         # String. Database name. Required.
-        'NAME': 'DEV_TOOL',
+        'NAME': 'testdb',
 
         # String. Database user name in "user" format. If not given then MS Integrated Security will be used.
-        'USER': 'WebUser',
+        'USER': 'testuser',
 
         # String. Database user password.
-        'PASSWORD': 'Allianz@0202',
+        'PASSWORD': '123',
 
          # String. SQL Server instance in "server\instance" format.
         'HOST': 'DESKTOP-IFIGS4J',
 
         # String. Server instance port. An empty string means the default port.
-        'PORT': '1433',
+        'PORT': '',
 
         # Dictionary. Additional database settings.
         'OPTIONS': {

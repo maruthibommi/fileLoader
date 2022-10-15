@@ -26,15 +26,20 @@ def read_file(file_name):
 
 def connect_sql():
     with connection.cursor() as cursor:
-        cursor.execute("select * from dbo.[LD.Load_details];")
+        
+        cursor.execute("SELECT * FROM [DTL].[Input_details]")
+        
         df = cursor.fetchall() 
+        print(df)
     return df
 
 def upload(request):
     context = {}
-    sqlTable = connect_sql()
-    validation_table = np.asarray([[k.rstrip() for k in sublist ] for sublist in sqlTable])
-    context['fileList'] = validation_table[:,0]
+    #sqlTable = connect_sql()
+    #print(sqlTable)
+    #validation_table = np.asarray([[k.rstrip() for k in sublist ] for sublist in sqlTable])
+    #context['fileList'] = validation_table[:,0]
+    context['fileList'] = ["data1.csv","data2.csv","data3.csv"]
     print(context['fileList'])
     if request.method == 'POST':
         uploaded_file = request.FILES['documents']
@@ -56,8 +61,8 @@ def validate(request):
         fs = FileSystemStorage()
         context['excel_data'] = read_file(context['name'])
         data_frame = convert_to_dataframe(context['name'])
-        sqlTable = connect_sql()
-        validation_table = np.asarray([[k.rstrip() for k in sublist ] for sublist in sqlTable])
+        #sqlTable = connect_sql()
+        validation_table = []#np.asarray([[k.rstrip() for k in sublist ] for sublist in sqlTable])
         context = data_quality(context['name'],data_frame,validation_table,context) 
         return render(request,'fileLoad/Html_css_files/validate.html',context)
 
